@@ -3,7 +3,7 @@ package service
 import javax.inject.Singleton
 import models.{Result, Tag}
 import play.api.libs.json.{JsValue, Json}
-import myimpli.MyImplicit.{resultWrites, tagWrites}
+import myimpli.MyImplicit.{resultFormats, tagFormats}
 
 @Singleton
 class TagService {

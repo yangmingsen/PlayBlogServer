@@ -12,11 +12,22 @@ GET     /tag/findAll                        controllers.TagController.findAll
 POST    /tag/save                           controllers.TagController.save
 
 
-
-GET    /article/findOne/:id                 controllers.ArticleController.findOne(id: Long)
-GET    /article/findAll                     controllers.ArticleController.findAll
-GET    /index                               controllers.ArticleController.index
 #article request
+GET    /article/findOne/:id                 controllers.ArticleController.findOne(id: Long)
+GET    /article/list/findAll                     controllers.ArticleController.findAll
+POST   /article/list/findAllByTagId         controllers.ArticleController.findAllByTagId
+POST   /article/list/findAllByCategoryId    controllers.ArticleController.findAllByCategoryId
+GET    /index/main                          controllers.ArticleController.index
+
+#info request
+POST   /info/findOne                        controllers.InfoController.findOne
+POST   /info/updateLikeNum                  controllers.InfoController.updateLikeNum
+
+
+#comment request
+POST   /comment/add                         controllers.CommentController.save
+POST   /comment/findAllByArticleId          controllers.CommentController.findAllByArticleId
+
 
 
 

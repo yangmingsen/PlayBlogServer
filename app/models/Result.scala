@@ -1,3 +1,3 @@
 package models
 
-case class Result(success: Boolean, message: String)
+case class Result(success: Boolean, message: String) extends AnyEntity

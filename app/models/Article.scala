@@ -24,13 +24,19 @@ object Article {
     }
   }
 
-  def findAll(params: Option[Any]*)(implicit session: DBSession = AutoSession): List[Article] = {
+  def findAll(template: String, params: Any*)(implicit session: DBSession = AutoSession): List[Article] = {
     DB readOnly { dbs =>
-      dbs.list("select id,author_id,article_category_id,tag_id,title,update_time,browse_num,like_num,abstract_content from article") { rs =>
+      dbs.list(template, params: _*) { rs =>
         new Article(rs.long("id"), rs.int("author_id"), rs.int("article_category_id"), rs.string("tag_id"),
           rs.string("title"),rs.string("update_time"), rs.int("browse_num"), rs.int("like_num"),
           rs.string("abstract_content"))
       }
+    }
+  }
+
+  def update(template: String, params: Any*)(implicit session: DBSession = AutoSession) = {
+    DB localTx { dbs =>
+      dbs.update(template,params: _*)
     }
   }
 
